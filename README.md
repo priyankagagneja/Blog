@@ -1,0 +1,2 @@
+# Blog
+Quarto Blog
