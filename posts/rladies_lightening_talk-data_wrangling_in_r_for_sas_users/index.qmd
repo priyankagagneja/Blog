@@ -1,0 +1,400 @@
+---
+title: "RLadies Philly & DC Lightning Talk"
+subtitle: "Data Wrangling In R For SAS users"
+format: 
+  rladies-revealjs:
+    footer: "[R-Ladies](https://rladies.org/) theme for [Quarto Presentations](https://quarto.org/docs/presentations/revealjs/index.html). Code available on [GitHub](https://github.com/beatrizmilz/quarto-rladies-theme)."
+    code-overflow: wrap
+engine: knitr
+code-block-border-left: true
+highlight-style: ayu
+---
+
+## Introduction {background-color="#562457"}
+
+**Priyanka Gagneja** ![](images/pg_LL.jpeg){.absolute top="10" right="10" width="250"}
+
+*Senior R Developer at ProCogia*
+
+![](images/procogia-logo-footer.png){.absolute top="270" right="10" width="250" height="100"}
+
+[Say Hi]{.underline}:
+
+-   [Linkedin](https://www.linkedin.com/in/priyanka-gagneja/)\
+-   [Twitter](https://www.twitter.com/priyankaigit)
+
+[Check Out:]{.underline}
+
+-   [Github](https://github.com/priyankagagneja)\
+-   [Blog](https://priyanka-gagneja.quarto.pub/learn-r-with-priyanka/)
+
+## Let's Discuss
+
+-   Who
+
+-   Why
+
+-   How
+
+::: notes
+Who: aims to familiarise SAS users with R
+
+Why: cos R is open source, FREE, has a strong community etc.
+
+How : rest of the presentation covers a brief synopsis on this.
+:::
+
+## Analytics Pipeline
+
+-   Importing data
+
+-   **Wrangling data**
+
+-   Plotting
+
+-   **Macros vs Functions**
+
+-   Modeling
+
+::: callout-tip
+## Yay!!
+
+SAS users start to feel at ease thinking about doing things in R
+:::
+
+## Importing data
+
+::: columns
+::: {.column width="45%"}
+SAS
+
+-   Operate in 'Work' library by default
+-   Use libname to define file locations
+
+```{sas, eval=FALSE, echo=TRUE}
+#| code-overflow: wrap
+libname library_name "file_location"; 
+
+data data_in_use ;
+set library_name.saved_data ; 
+run;
+
+proc import datafile = "my_file.csv" 
+            out = my_data dbms = csv;
+run;
+```
+:::
+
+::: {.column width="48%"}
+R
+
+-   Operate in a given 'working directory'- use **getwd()** )
+-   Use **setwd()** to switch to other locations
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-overflow: wrap
+
+setwd("file_location")
+
+
+save(data_in_use , file = "saved_data.rda")
+
+
+
+
+write.csv()
+```
+:::
+:::
+
+## Wrangling data
+
+Working with columns - create, (de)select, rename variables
+
+::: columns
+::: {.column width="48%"}
+SAS
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "|1,2,3,4|6,7,8,9|11,12,13,14|16,17,18,19,20"
+# assigning a new data frame - data step
+data new_data; 
+set old_data;
+run;
+
+# keeping & dropping a column
+data new_data (keep=id);
+set old_data (drop=job_title) ;
+run;
+
+# dropping multiple columns
+data new_data (drop= temp: ); 
+set old_data;
+run;
+
+# renaming a column   
+data new_data;
+set old_data;
+rename old_name = new_name;
+run;
+
+```
+:::
+
+::: {.column width="45%"}
+R
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "|1,2,3,4|6,7,8,9|11,12,13,14|16,17,18,19,20"
+# assigning a new data frame
+new_data <- old_data
+
+
+
+# selecting & deselecting a column
+new_data <- old_data %>% 
+  select(-job_title) %>% 
+  select(id)
+
+# selecting a bunch of columns to remove
+new_data <- old_data %>% 
+  select( -starts_with("temp"))
+
+          
+# renaming a column         
+
+
+new_data <- old_data %>%
+  rename(new_name = old_name)
+
+```
+:::
+:::
+
+## Wrangling data.. contd
+
+Working with rows - Sorting & Filtering
+
+::: columns
+::: {.column width="48%"}
+SAS
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "|1,2,3,4,5, 6,7,8|10,11,12,13,14|16,17,18"
+# Sorting data
+proc sort data=old_data out=new_data; 
+by id descending income ;
+run;
+
+# Remove duplicates while sorting
+proc sort data=old_data nodup; 
+by id job_type;
+run;
+
+
+# Filtering for rows satisfying certain criteria
+data new_data;
+set old_data; 
+if year = 2020;
+run;
+
+data new_data;
+set old_data;
+by id;
+counter + 1 ;
+if first.id then counter = 1;
+if counter <= 5;
+run;
+
+```
+:::
+
+::: {.column width="45%"}
+R
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "|1,2,3,4,5, 6,7,8"
+# Arranging data
+new_data <- old_data %>% 
+  arrange(id, desc(income))
+
+
+# Remove duplicates while sorting
+old_data <- old_data %>% 
+  arrange(id, job_type) %>% 
+  distinct()
+
+
+# Filtering for rows satisfying certain criteria
+new_data <- old_data %>%
+  filter(year == 2020)
+
+
+
+
+
+new_data <- old_data %>% 
+  group_by(id) %>%
+  mutate(counter = row_number()) %>% 
+  filter(counter <=5)
+
+```
+:::
+:::
+
+## Wrangling data.. contd
+
+Working with aggregates - Summarising, Tabulating
+
+::: columns
+::: {.column width="48%"}
+SAS
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "|1,2,3,4,5, 6,7,8|10,11,12,13,14|16,17,18"
+# Counting across one/multiple columns
+proc freq data = old_data ; 
+table job_type ;
+run;
+
+proc freq data = old_data ;
+table job_type*region ; 
+run;
+
+# Summarise data
+proc summary data = old_data nway ; 
+class job_type region ;
+output out = new_data ;
+run;
+
+proc summary data = old_data nway ; 
+class job_type region ;
+var salary ;
+
+```
+:::
+
+::: {.column width="45%"}
+R
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "|1,2,3,4,5, 6,7,8|10,11,12,13,14|16,17,18"
+# Counting across one/multiple columns
+old_data %>%
+  count(job_type) %>% 
+  mutate(percent = n*100/sum(n))
+
+old_data %>%
+ count(job_type, region)
+
+
+# Summarise data (equi to with nway option)
+new_data <- old_data %>% 
+  group_by(job_type, region) %>% 
+  summarise(Count = n())
+
+new_data <- old_data %>%
+  group_by(job_type, region) %>% 
+  summarise(total_salaries = sum(salary) ,
+            Count          = n() )
+
+```
+:::
+:::
+
+## Wrangling data.. contd
+
+Combining various dataframes - Merging, Appending et al
+
+::: columns
+::: {.column width="48%"}
+SAS
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "|1,2,3,4|6,7,8,9,10,11"
+# Append/Bind rows
+data new_data ;
+set data_1 data_2 ; 
+run;
+
+# Join df to add columns
+data new_data ;
+merge data_1 (in= in_1) data_2 ; 
+by id ;
+if in_1 ;
+run;
+
+```
+:::
+
+::: {.column width="45%"}
+R
+
+```{r, eval=FALSE, echo=TRUE}
+#| code-line-numbers: "|1,2,3,4|6,7,8,9,10,11"
+# Append/Bind rows
+new_data <- bind_rows(data_1, 
+                      data_2)
+
+
+
+# Join df to add columns
+new_data <- left_join(data_1 , 
+                      data_2 , 
+                      by = "id"
+                      )
+
+```
+:::
+:::
+
+## Wrangling data.. contd
+
+More to cover ?
+
+-   working with dates
+
+-   working with strings
+
+-   Plotting data
+
+## Automating the tasks
+
+SAS
+
+```{r, eval=FALSE, echo=TRUE}
+
+%macro add_variable(dataset_name); 
+
+data &dataset_name;
+set &dataset_name;
+new_variable = 1; 
+run;
+
+%mend;
+
+%add_variable( my_data );
+```
+
+R
+
+```{r, eval=FALSE, echo=TRUE}
+
+add_variable <- function(dataset_name){ 
+  
+  dataset_name <- dataset_name %>%
+    mutate(new_variable = 1)
+  
+return( dataset_name ) 
+}
+
+my_data <- add_variable( my_data )
+```
+
+## Automating the tasks
+
+-   For simpler functions, helper functions like `across()` from tidyverse could also be used to perform an action across multiple columns without needing to use a loop.
+
+-   For nested functions, you could use `map` (or ancillary) family of functions from `{purrr}` pkg to get a more efficient form of for/while loops.
+
+# Thank You !! {background-color="#562457"}

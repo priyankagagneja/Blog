@@ -1,0 +1,169 @@
+---
+title: "Tidy Selection"
+author: "Technical Description"
+date: "2023-05-12"
+categories: [news, code, analysis]
+image: "image.jpg"
+format:
+  revealjs
+---
+
+## **Sets of variables**
+
+-   Earlier versions of tidyselect had more of a flavour of set operations, so that you'd write `starts_with("a") - ends_with("b")`
+
+-   Today, the syntax of tidyselect is generally designed around **Boolean algebra**, i.e.we recommend writing `starts_with("a") & !ends_with("z")`.
+
+
+```{r}
+library(tidyverse)
+library(tidyselect)
+```
+```{r}
+select_loc <- function(data, ...) {
+  eval_select(rlang::expr(c(...)), data)
+}
+
+rename_loc <- function(data, ...) {
+  eval_rename(rlang::expr(c(...)), data)
+}
+```
+
+
+
+# Ways to access the sets of variables
+
+## (a) **Using Bare names**
+
+Within *data-expressions*, bare names represent their own locations, i.e. a set of size 1
+
+```{r, echo=TRUE}
+head(mtcars)
+```
+
+::: columns
+::: {.column width="50%"}
+
+```{r, echo=TRUE}
+mtcars %>% 
+  select_loc(mpg:hp, !cyl, vs)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r, echo=TRUE}
+mtcars %>% 
+  select_loc(1:4, !2, 8)
+```
+
+
+:::
+
+:::
+
+
+## (b) **Using : operator**     
+
+- selects consecutive variables between two locations. 
+- returns the corresponding sequence of locations.
+
+::: columns
+::: {.column width="50%"}
+
+```{r, echo=TRUE}
+mtcars %>% 
+  select_loc(mpg:hp)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r, echo=TRUE}
+mtcars %>% 
+  select_loc(1:4)
+```
+
+
+:::
+
+:::
+
+## (c) **Using boolean operators**     
+
+- union(|), intersection(&), complement(!)
+
+```{r}
+iris %>% select_loc(starts_with("Sepal") | ends_with("Width"))
+
+iris %>% select_loc(starts_with("Sepal") & ends_with("Width"))
+
+iris %>% select_loc(!ends_with("Width"))
+
+iris %>% select_loc(starts_with("Sepal") & !ends_with("Width"))
+
+```
+
+
+## (d) **Using ... & c()**     
+
+tidyselect functions can take    
+
+- dots, like dplyr::select(), or 
+- a named argument, like tidyr::pivot_longer(). 
+
+
+::: columns
+::: {.column width="50%"}
+
+```{r, echo=TRUE}
+mtcars %>% 
+  select_loc(mpg, disp:hp)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r, echo=TRUE}
+mtcars %>% 
+  select_loc(c(mpg, disp:hp))
+
+```
+
+:::
+
+:::
+
+c(x, y, z) is a equivalent to x | y | z
+
+::: columns
+::: {.column width="50%"}
+
+```{r, echo=TRUE}
+iris %>% 
+  select_loc(starts_with("Sepal"), 
+             ends_with("Width"), 
+             Species)
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r, echo=TRUE}
+iris %>% 
+  select_loc(starts_with("Sepal") | 
+               ends_with("Width") | 
+               Species)
+
+```
+
+:::
+
+:::
+
+
+## (e) **by renaming variables**  

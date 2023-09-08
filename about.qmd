@@ -1,0 +1,15 @@
+---
+title: "About"
+image: PG.jpeg
+about:
+  template: jolla
+  links:
+    - icon: github
+      href: https://github.com/priyankagagneja
+    - icon: linkedin
+      href: https://linkedin.com/in/priyanka-gagneja
+    - icon: twitter
+      href: https://twitter.com/priyankaigit
+---
+
+About this blog

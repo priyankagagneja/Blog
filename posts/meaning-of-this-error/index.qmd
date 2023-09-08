@@ -1,0 +1,12 @@
+---
+title: "Functional Programming with Purrr"
+subtitle: "My Most frequently used use cases"
+author: "Priyanka Gagneja"
+date: "2023-03-24"
+categories: [R Programming, examples, til, how-to]
+image: ""
+draft: true
+---
+
+Place to discuss several use cases where I could use 
+

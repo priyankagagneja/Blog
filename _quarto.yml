@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: "Blog"
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/priyankagagneja
+      - icon: linkedin
+        href: https://linkedin.com/in/priyanka-gagneja
+      - icon: twitter
+        href: https://twitter.com/priyankaigit
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+editor: visual
+

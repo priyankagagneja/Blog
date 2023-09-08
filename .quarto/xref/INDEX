@@ -1,0 +1,35 @@
+{
+  "index.qmd": {
+    "index.html": "0618dc64"
+  },
+  "posts/post-with-code/index.qmd": {
+    "index.html": "51c577ce"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "3a9387e5"
+  },
+  "about.qmd": {
+    "about.html": "a8b3a000"
+  },
+  "posts/purrr-use-cases-i-frequently-use/index.qmd": {
+    "index.html": "21a69698"
+  },
+  "posts/meaning_of_this_error/index.qmd": {
+    "index.html": "695a4b9f"
+  },
+  "posts/meaning-of-this-error/index.qmd": {
+    "index.html": "470067fd"
+  },
+  "posts/rlang-guides-discussion/index.qmd": {
+    "index.html": "43d68895"
+  },
+  "posts/technicalities-of-tidy-selection/index.qmd": {
+    "index.html": "1470b847"
+  },
+  "posts/CCAI-smart_metering_tutorial/index.qmd": {
+    "index.html": "73e3a9b8"
+  },
+  "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.qmd": {
+    "index.html": "e826ba9a"
+  }
+}

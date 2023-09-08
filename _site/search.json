@@ -1,0 +1,268 @@
+[
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Priyanka Gagneja",
+    "section": "",
+    "text": "RLadies Philly & DC Lightning Talk\n\n\nData Wrangling In R For SAS users\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nRLadies Philly & DC Lightning Talk\n\n\nData Wrangling In R For SAS users\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nCCAI - Smart Metering Data Analysis\n\n\nAs part of Climate Change AI teaching series\n\n\n\n\nclimate-change\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJul 10, 2023\n\n\nPriyanka Gagneja\n\n\n\n\n\n\n  \n\n\n\n\nTidy Selection\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMay 12, 2023\n\n\nTechnical Description\n\n\n\n\n\n\n  \n\n\n\n\nTidy Evaluation Guide - Overview\n\n\nData Masking\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMay 10, 2023\n\n\nPriyanka Gagneja\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nMar 20, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nMar 17, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html",
+    "href": "posts/rlang-guides-discussion/index.html",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "",
+    "text": "Environment variable - variables that live inside environments.\nData variables - variables stored in data frames."
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#data-masking",
+    "href": "posts/rlang-guides-discussion/index.html#data-masking",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "Data Masking",
+    "text": "Data Masking\nIt is a feature that lets you blend programming variables.\nEasily to refer to data frame columns -\n\nas columns itself, or\nas objects defined in the current environment.\n\n\n\n\n\nx <- 100\nmtcars %>% \n  dplyr::summarise(mean(disp / x))\n\n  mean(disp/x)\n1     2.307219"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#but",
+    "href": "posts/rlang-guides-discussion/index.html#but",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "But!!",
+    "text": "But!!\n\n# create a dataframe\n(df <- data.frame(x = NA, y = 2))\n\n   x y\n1 NA 2\n\n# create a variable\n(x <- 100)\n\n[1] 100\n\n# divide the column y by 100.\ndf %>% \n  dplyr::mutate(y = y / x)\n\n   x  y\n1 NA NA"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#but-1",
+    "href": "posts/rlang-guides-discussion/index.html#but-1",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "But!!",
+    "text": "But!!\n\n\n\n# create a dataframe               \n(df <- data.frame(x = NA, y = 2))       \n\n   x y\n1 NA 2\n\n# create a variable\n(x <- 100)                              \n\n[1] 100\n\n# divide the column y by 100.\ndf %>% \n  dplyr::mutate(y = y / x)\n\n   x  y\n1 NA NA\n\n\n\n\n\n\n\n\n\nData Variable\n\n\n\n\n\n\n\n\n\n\n\n\nEnvironment Variable\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCollision\n\n\nA collision leads to this unexpected behavior"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#programming-variables",
+    "href": "posts/rlang-guides-discussion/index.html#programming-variables",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "Programming variables",
+    "text": "Programming variables\n\nEnvironment variable - variables that live inside environments.\nData variable - variables stored in data frames."
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#section",
+    "href": "posts/rlang-guides-discussion/index.html#section",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "",
+    "text": "# A tibble: 344 × 10\n   species island    bill_…¹ bill_…² flipp…³ body_…⁴ sex    year bill_…⁵ bill_…⁶\n   <fct>   <fct>       <dbl>   <dbl>   <int>   <int> <fct> <int>   <dbl>   <dbl>\n 1 Adelie  Torgersen    39.1    18.7     181    3750 male   2007   0.478    731.\n 2 Adelie  Torgersen    39.5    17.4     186    3800 fema…  2007   0.441    687.\n 3 Adelie  Torgersen    40.3    18       195    3250 fema…  2007   0.447    725.\n 4 Adelie  Torgersen    NA      NA        NA      NA <NA>   2007  NA         NA \n 5 Adelie  Torgersen    36.7    19.3     193    3450 fema…  2007   0.526    708.\n 6 Adelie  Torgersen    39.3    20.6     190    3650 male   2007   0.524    810.\n 7 Adelie  Torgersen    38.9    17.8     181    3625 fema…  2007   0.458    692.\n 8 Adelie  Torgersen    39.2    19.6     195    4675 male   2007   0.5      768.\n 9 Adelie  Torgersen    34.1    18.1     193    3475 <NA>   2007   0.531    617.\n10 Adelie  Torgersen    42      20.2     190    4250 <NA>   2007   0.481    848.\n# … with 334 more rows, and abbreviated variable names ¹​bill_length_mm,\n#   ²​bill_depth_mm, ³​flipper_length_mm, ⁴​body_mass_g, ⁵​bill_ratio, ⁶​bill_area\n\n\n\nTake penguins, and then,\nadd new columns for the bill ratio and bill area."
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#collisions",
+    "href": "posts/rlang-guides-discussion/index.html#collisions",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "Collisions",
+    "text": "Collisions\nA collision occurs when there exists an object in the environment and a column in data frame have same name.\n\nColumn - when you actually wanted to use the object.\n\ndf <- data.frame(x = NA, y = 2)\nx <- 100\n\ndf %>% dplyr::mutate(y = y / x)\n\n   x  y\n1 NA NA\n\n\nObject - when you actually wanted to use the column.\n\n\n\n\ndf <- data.frame(x = \"right\")\nxx <- \"wrong\"\n\ndf %>% \n  dplyr::mutate(foo = toupper(xx))\n\n      x   foo\n1 right WRONG\n\n\n\n\ndf %>% \n  dplyr::mutate(foo = toupper(x))\n\n      x   foo\n1 right RIGHT"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#how-to-prevent-collisions",
+    "href": "posts/rlang-guides-discussion/index.html#how-to-prevent-collisions",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "How to prevent collisions",
+    "text": "How to prevent collisions\nBE EXPLICIT\n\n\n\n\nUse .data and .env pronouns\n.data refers to the dataframe in the latest state before the pipe.\n\n\ndf %>% dplyr::mutate(y = .data$y / .env$x)\n\n\nSubsetting .data with env-variables\n\n\n\nvar <- \"cyl\"\nmtcars %>% dplyr::summarise(mean = mean(.data[[var]]))\n\n\n\n\n\n\n\n.data pronoun can only be subsetted with env-variables, not data-variables.\n\n\n[[ behaves like an !!(injection operator)\n\n\n\n\nInjecting env-variables with !!\n\n\ndf %>% dplyr::mutate(y = y / !!x)\n\n  x    y\n1 1 0.02"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#how-to-prevent-collisions.incremental-false",
+    "href": "posts/rlang-guides-discussion/index.html#how-to-prevent-collisions.incremental-false",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "How to prevent collisions{.incremental: false}",
+    "text": "How to prevent collisions{.incremental: false}\nBE EXPLICIT\n\n\n\n\nUse .data and .env pronouns\n\n\ndf %>% dplyr::mutate(y = .data$y / .env$x)\n\n\nSubsetting .data with env-variables\n\n\nvar <- \"cyl\"\nmtcars %>% dplyr::summarise(mean = mean(.data[[var]]))\n\n\n\n\n\n\n\n.data pronoun can only be subsetted with env-variables, not data-variables.\n\n\n\n\n\n\n\nInjecting env-variables with !!\n\n\ndf %>% dplyr::mutate(y = y / !!x)\n\n  x    y\n1 1 0.02"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#how-to-prevent-collisions-.incremental-false",
+    "href": "posts/rlang-guides-discussion/index.html#how-to-prevent-collisions-.incremental-false",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "How to prevent collisions {.incremental: FALSE}",
+    "text": "How to prevent collisions {.incremental: FALSE}\nBE EXPLICIT\n\n\n\n\nUse .data and .env pronouns\n\n\n\ndf %>% dplyr::mutate(y = .data$y / .env$x)\n\n\nSubsetting .data with env-variables\n\n\n\nvar <- \"cyl\"\nmtcars %>% dplyr::summarise(mean = mean(.data[[var]]))\n\n\n\n\n\n\n\n.data pronoun can only be subsetted with env-variables, not data-variables.\n\n\n[[ behaves like an !!(injection operator)\n\n\n\n\nInjecting env-variables with !!\n\n\ndf %>% dplyr::mutate(y = y / !!x)\n\n  x    y\n1 1 0.02"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#tidy-selections",
+    "href": "posts/rlang-guides-discussion/index.html#tidy-selections",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "Tidy Selections",
+    "text": "Tidy Selections\n\nDialect of R that optimises column selection in tidyverse packages.\nNo ambiguity due to its implementation.\n\nEvaluation of expressions is either scoped in the data mask only, or in the environment only.\n\nExamples - dplyr::select() and tidyr::pivot_longer().\nTidy selections distinguish data-expressions and env-expressions:\n\ndata is a data-expression that refers to the data-variable.\nncol(data) is an env-expression that refers to the env-variable."
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#names-pattern-with-all_of",
+    "href": "posts/rlang-guides-discussion/index.html#names-pattern-with-all_of",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "Names pattern with all_of()",
+    "text": "Names pattern with all_of()\n\nall_of() is often used in functions as a programming pattern that connects column names to a data mask, similarly to the .data pronoun.\n\n\n\n\n\nall_of() is an env-expression that is evaluated outside of the data mask, so there is no possibility of collisions."
+  },
+  {
+    "objectID": "posts/technicalities-of-tidy-selection/index.html",
+    "href": "posts/technicalities-of-tidy-selection/index.html",
+    "title": "Tidy Selection",
+    "section": "",
+    "text": "To illustrate the semantics of tidyselect, we'll use variants of dplyr::select() and dplyr::rename() that return the named vector of locations for the selected or renamed elements:"
+  },
+  {
+    "objectID": "posts/technicalities-of-tidy-selection/index.html#sets-of-variables",
+    "href": "posts/technicalities-of-tidy-selection/index.html#sets-of-variables",
+    "title": "Tidy Selection",
+    "section": "Sets of variables",
+    "text": "Sets of variables\n\nEarlier versions of tidyselect had more of a flavour of set operations, so that you’d write starts_with(\"a\") - ends_with(\"b\")\nToday, the syntax of tidyselect is generally designed around Boolean algebra, i.e.we recommend writing starts_with(\"a\") & !ends_with(\"z\")."
+  },
+  {
+    "objectID": "posts/technicalities-of-tidy-selection/index.html#a-using-bare-names",
+    "href": "posts/technicalities-of-tidy-selection/index.html#a-using-bare-names",
+    "title": "Tidy Selection",
+    "section": "(a) Using Bare names",
+    "text": "(a) Using Bare names\nWithin data-expressions, bare names represent their own locations, i.e. a set of size 1\n\nhead(mtcars)\n\n                   mpg cyl disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1\n\n\n\n\n\nmtcars %>% \n  select_loc(mpg:hp, !cyl, vs)\n\n mpg  cyl disp   hp drat   wt qsec   vs   am gear carb \n   1    2    3    4    5    6    7    8    9   10   11 \n\n\n\n\nmtcars %>% \n  select_loc(1:4, !2, 8)\n\n mpg  cyl disp   hp drat   wt qsec   vs   am gear carb \n   1    2    3    4    5    6    7    8    9   10   11"
+  },
+  {
+    "objectID": "posts/technicalities-of-tidy-selection/index.html#a-using-operator",
+    "href": "posts/technicalities-of-tidy-selection/index.html#a-using-operator",
+    "title": "Tidy Selection",
+    "section": "(a) Using : operator",
+    "text": "(a) Using : operator\n\nselects consecutive variables between two locations.\nreturns the corresponding sequence of locations.\n\n\n\n\nmtcars %>% \n  select_loc(mpg:hp)\n\n mpg  cyl disp   hp \n   1    2    3    4 \n\n\n\n\nmtcars %>% \n  select_loc(1:4)\n\n mpg  cyl disp   hp \n   1    2    3    4"
+  },
+  {
+    "objectID": "posts/technicalities-of-tidy-selection/index.html#b-using-operator",
+    "href": "posts/technicalities-of-tidy-selection/index.html#b-using-operator",
+    "title": "Tidy Selection",
+    "section": "(b) Using : operator",
+    "text": "(b) Using : operator\n\nselects consecutive variables between two locations.\nreturns the corresponding sequence of locations.\n\n\n\n\nmtcars %>% \n  select_loc(mpg:hp)\n\n mpg  cyl disp   hp \n   1    2    3    4 \n\n\n\n\nmtcars %>% \n  select_loc(1:4)\n\n mpg  cyl disp   hp \n   1    2    3    4"
+  },
+  {
+    "objectID": "posts/technicalities-of-tidy-selection/index.html#c-using-boolean-operators",
+    "href": "posts/technicalities-of-tidy-selection/index.html#c-using-boolean-operators",
+    "title": "Tidy Selection",
+    "section": "(c) Using boolean operators",
+    "text": "(c) Using boolean operators\n\nunion(|), intersection(&), complement(!)\n\n\n\nSepal.Length  Sepal.Width  Petal.Width \n           1            2            4 \n\n\nSepal.Width \n          2 \n\n\nSepal.Length Petal.Length      Species \n           1            3            5 \n\n\nSepal.Length \n           1"
+  },
+  {
+    "objectID": "posts/technicalities-of-tidy-selection/index.html#d-using-c",
+    "href": "posts/technicalities-of-tidy-selection/index.html#d-using-c",
+    "title": "Tidy Selection",
+    "section": "(d) Using … & c()",
+    "text": "(d) Using … & c()\ntidyselect functions can take\n\ndots, like dplyr::select(), or\na named argument, like tidyr::pivot_longer().\n\n\n\n\nmtcars %>% \n  select_loc(mpg, disp:hp)\n\n mpg disp   hp \n   1    3    4 \n\n\n\n\nmtcars %>% \n  select_loc(c(mpg, disp:hp))\n\n mpg disp   hp \n   1    3    4 \n\n\n\n\nc(x, y, z) is a equivalent to x | y | z\n\n\n\niris %>% \n  select_loc(starts_with(\"Sepal\"), \n             ends_with(\"Width\"), \n             Species)\n\nSepal.Length  Sepal.Width  Petal.Width      Species \n           1            2            4            5 \n\n\n\n\niris %>% \n  select_loc(starts_with(\"Sepal\") | \n               ends_with(\"Width\") | \n               Species)\n\nSepal.Length  Sepal.Width  Petal.Width      Species \n           1            2            4            5"
+  },
+  {
+    "objectID": "posts/rlang-guides-discussion/index.html#questions",
+    "href": "posts/rlang-guides-discussion/index.html#questions",
+    "title": "Tidy Evaluation Guide - Overview",
+    "section": "Questions",
+    "text": "Questions\n\n\n\n\n\n\nNote\n\n\nTechnically, this is because [[ behaves like an injection operator when applied to .data. It is evaluated very early before the data mask is even created.\n\n\n\n\n\n\n\n\n\nNote\n\n\nInjection operators such as !! modify a piece of code early on by injecting objects or other expressions before any data-masking logic comes into play. If you inject the value of a variable, it becomes inlined in the expression. R no longer needs to look up any variable to find the value."
+  },
+  {
+    "objectID": "posts/technicalities-of-tidy-selection/index.html#e-by-renaming-variables",
+    "href": "posts/technicalities-of-tidy-selection/index.html#e-by-renaming-variables",
+    "title": "Tidy Selection",
+    "section": "(e) by renaming variables",
+    "text": "(e) by renaming variables"
+  },
+  {
+    "objectID": "posts/CCAI-smart_metering_tutorial/index.html",
+    "href": "posts/CCAI-smart_metering_tutorial/index.html",
+    "title": "CCAI - Smart Metering Data Analysis",
+    "section": "",
+    "text": "Credit: Original Authors: “Prof. Dr. Elgar Fleisch, Prof. Dr. Thorsten Staake”\nKey Learning Objectives\nIn this tutorial, we provide a practical guide to current trends in smart meter data analytics. In particular, we focus on feature engineering and machine learning scenarios for energy data. During this tutorial:\n\nYou will gain insights into current trends and use cases in the energy space.\n\nYou will learn best practices for energy data visualization.\n\nYou will apply both machine learning approaches and data mining techniques to real-world energy data.\n\nYou will get a sense of typical and atypical energy use in a residential building.\n\nIn addition, some concepts offer the possibility of being applied to other time series data outside of the energy domain.\n\nNote: We would also like to point out that some utilities allow their customers access to their own smart meter data either through customer portals or upon request. If you have an active smart meter at home, you can use this guide as a starting point for analyzing your own energy usage."
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#introduction",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#introduction",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Introduction",
+    "text": "Introduction\nPriyanka Gagneja \nSenior R Developer at ProCogia\n\nSay Hi:\n\nLinkedin\n\nTwitter\n\nCheck Out:\n\nGithub\n\nBlog"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#lets-discuss",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#lets-discuss",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Let’s Discuss",
+    "text": "Let’s Discuss\n\nWho\nWhy\nHow\n\n\nWho: aims to familiarise SAS users with R\nWhy: cos R is open source, FREE, has a strong community etc.\nHow : rest of the presentation covers a brief synopsis on this."
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#analytics-pipeline",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#analytics-pipeline",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Analytics Pipeline",
+    "text": "Analytics Pipeline\n\nImporting data\nWrangling data\nPlotting\nMacros vs Functions\nModeling\n\n\n\n\n\n\n\nYay!!\n\n\nSAS users start to feel at ease thinking about doing things in R"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#importing-data",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#importing-data",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Importing data",
+    "text": "Importing data\n\n\nSAS\n\nOperate in ‘Work’ library by default\nUse libname to define file locations\n\n\nlibname library_name \"file_location\"; \n\ndata data_in_use ;\nset library_name.saved_data ; \nrun;\n\nproc import datafile = \"my_file.csv\" \n            out = my_data dbms = csv;\nrun;\n\n\nR\n\nOperate in a given ‘working directory’- use getwd() )\nUse setwd() to switch to other locations\n\n\nsetwd(\"file_location\")\n\n\nsave(data_in_use , file = \"saved_data.rda\")\n\n\n\n\nwrite.csv()"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Wrangling data",
+    "text": "Wrangling data\nWorking with columns - create, (de)select, rename variables\n\n\nSAS\n\n# assigning a new data frame - data step\ndata new_data; \nset old_data;\nrun;\n\n# keeping & dropping a column\ndata new_data (keep=id);\nset old_data (drop=job_title) ;\nrun;\n\n# dropping multiple columns\ndata new_data (drop= temp: ); \nset old_data;\nrun;\n\n# renaming a column   \ndata new_data;\nset old_data;\nrename old_name = new_name;\nrun;\n\n\nR\n\n# assigning a new data frame\nnew_data <- old_data\n\n\n\n# selecting & deselecting a column\nnew_data <- old_data %>% \n  select(-job_title) %>% \n  select(id)\n\n# selecting a bunch of columns to remove\nnew_data <- old_data %>% \n  select( -starts_with(\"temp\"))\n\n          \n# renaming a column         \n\n\nnew_data <- old_data %>%\n  rename(new_name = old_name)"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data..-contd",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data..-contd",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Wrangling data.. contd",
+    "text": "Wrangling data.. contd\nWorking with rows - Sorting & Filtering\n\n\nSAS\n\n# Sorting data\nproc sort data=old_data out=new_data; \nby id descending income ;\nrun;\n\n# Remove duplicates while sorting\nproc sort data=old_data nodup; \nby id job_type;\nrun;\n\n\n# Filtering for rows satisfying certain criteria\ndata new_data;\nset old_data; \nif year = 2020;\nrun;\n\ndata new_data;\nset old_data;\nby id;\ncounter + 1 ;\nif first.id then counter = 1;\nif counter <= 5;\nrun;\n\n\nR\n\n# Arranging data\nnew_data <- old_data %>% \n  arrange(id, desc(income))\n\n\n# Remove duplicates while sorting\nold_data <- old_data %>% \n  arrange(id, job_type) %>% \n  distinct()\n\n\n# Filtering for rows satisfying certain criteria\nnew_data <- old_data %>%\n  filter(year == 2020)\n\n\n\n\n\nnew_data <- old_data %>% \n  group_by(id) %>%\n  mutate(counter = row_number()) %>% \n  filter(counter <=5)"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data..-contd-1",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data..-contd-1",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Wrangling data.. contd",
+    "text": "Wrangling data.. contd\nWorking with aggregates - Summarising, Tabulating\n\n\nSAS\n\n# Counting across one/multiple columns\nproc freq data = old_data ; \ntable job_type ;\nrun;\n\nproc freq data = old_data ;\ntable job_type*region ; \nrun;\n\n# Summarise data\nproc summary data = old_data nway ; \nclass job_type region ;\noutput out = new_data ;\nrun;\n\nproc summary data = old_data nway ; \nclass job_type region ;\nvar salary ;\n\n\nR\n\n# Counting across one/multiple columns\nold_data %>%\n  count(job_type) %>% \n  mutate(percent = n*100/sum(n))\n\nold_data %>%\n count(job_type, region)\n\n\n# Summarise data (equi to with nway option)\nnew_data <- old_data %>% \n  group_by(job_type, region) %>% \n  summarise(Count = n())\n\nnew_data <- old_data %>%\n  group_by(job_type, region) %>% \n  summarise(total_salaries = sum(salary) ,\n            Count          = n() )"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data..-contd-2",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data..-contd-2",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Wrangling data.. contd",
+    "text": "Wrangling data.. contd\nCombining various dataframes - Merging, Appending et al\n\n\nSAS\n\n# Append/Bind rows\ndata new_data ;\nset data_1 data_2 ; \nrun;\n\n# Join df to add columns\ndata new_data ;\nmerge data_1 (in= in_1) data_2 ; \nby id ;\nif in_1 ;\nrun;\n\n\nR\n\n# Append/Bind rows\nnew_data <- bind_rows(data_1, \n                      data_2)\n\n\n\n# Join df to add columns\nnew_data <- left_join(data_1 , \n                      data_2 , \n                      by = \"id\"\n                      )"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data..-contd-3",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#wrangling-data..-contd-3",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Wrangling data.. contd",
+    "text": "Wrangling data.. contd\nMore to cover ?\n\nworking with dates\nworking with strings\nPlotting data"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#automating-the-tasks",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#automating-the-tasks",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Automating the tasks",
+    "text": "Automating the tasks\nSAS\n\n%macro add_variable(dataset_name); \n\ndata &dataset_name;\nset &dataset_name;\nnew_variable = 1; \nrun;\n\n%mend;\n\n%add_variable( my_data );\n\nR\n\nadd_variable <- function(dataset_name){ \n  \n  dataset_name <- dataset_name %>%\n    mutate(new_variable = 1)\n  \nreturn( dataset_name ) \n}\n\nmy_data <- add_variable( my_data )"
+  },
+  {
+    "objectID": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#automating-the-tasks-1",
+    "href": "posts/rladies_lightening_talk-data_wrangling_in_r_for_sas_users/index.html#automating-the-tasks-1",
+    "title": "RLadies Philly & DC Lightning Talk",
+    "section": "Automating the tasks",
+    "text": "Automating the tasks\n\nFor simpler functions, helper functions like across() from tidyverse could also be used to perform an action across multiple columns without needing to use a loop.\nFor nested functions, you could use map (or ancillary) family of functions from {purrr} pkg to get a more efficient form of for/while loops."
+  },
+  {
+    "objectID": "posts/purrr-use-cases-i-frequently-use/index.html",
+    "href": "posts/purrr-use-cases-i-frequently-use/index.html",
+    "title": "Functional Programming with Purrr",
+    "section": "",
+    "text": "library(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(purrr)\n\nPlace to discuss several use cases where I could use\n\n## Cache SAS outputs (saved in the same location as SAS output files)\npurrr::walk(.x = output_file_names,\n            .f = ~ write_csv_plus(haven::read_sas(paste0(sas_output_path, \"/\", .x, \".sas7bdat\")),\n                                  paste0(sas_output_path, \"/\", .x, \".csv\"))\n            )\n            \n## Cache SAS outputs (saved inside production/tests/testdata/fn/expected_output)\npurrr::walk(.x = output_file_names,\n            .f = ~ write_csv_plus(haven::read_sas(paste0(sas_output_path, \"/\", .x, \".sas7bdat\")),\n                                  paste0(tests_output_path, \"/\", .x, \".csv\"))\n)\n\n\nset.seed(42)\ndf1 <- data.frame(location = rep(c(\"Location A\", \"Location B\", \"Location C\"), 3),\n              value = rnorm(9), extra = \"yes\")\ndf2 <- data.frame(location = rep(c(\"Location A\", \"Location C\", \"Location D\"), 2),\n              value = rnorm(6), var = \"extra var\")\ndf3 <- data.frame(location = rep(c(\"Location B\", \"Location D\", \"Location E\"), 2),\n              number = rnorm(6))\n\ndfs <- list(df1, df2, df3)\n\n# So the spreadsheet would have a tab for location A that would read:\n# Row 1: value 1.37; extra yes; var NA; number NA\n# Row n: value -0.06; extra NA; var extra var; number NA\n# Then similar for Location B...\n# Seems simplish but I'm totally stuck. Any ideas?\n\n\n# ----\ndf_s <- dplyr::bind_rows(df1, df2, df3)\n\nfilter_loc <- function(df, loc_value) {\n    df %>% \n        dplyr::filter(location == paste(\"Location\", loc_value))\n}\n\npurrr::map(.x = c(\"A\", \"B\", \"C\", \"D\", \"E\"), .f = ~ df_s %>% filter_loc(.x))\n\n[[1]]\n    location      value extra       var number\n1 Location A  1.3709584   yes      <NA>     NA\n2 Location A  0.6328626   yes      <NA>     NA\n3 Location A  1.5115220   yes      <NA>     NA\n4 Location A -0.0627141  <NA> extra var     NA\n5 Location A -1.3888607  <NA> extra var     NA\n\n[[2]]\n    location       value extra  var     number\n1 Location B -0.56469817   yes <NA>         NA\n2 Location B  0.40426832   yes <NA>         NA\n3 Location B -0.09465904   yes <NA>         NA\n4 Location B          NA  <NA> <NA>  0.6359504\n5 Location B          NA  <NA> <NA> -2.4404669\n\n[[3]]\n    location      value extra       var number\n1 Location C  0.3631284   yes      <NA>     NA\n2 Location C -0.1061245   yes      <NA>     NA\n3 Location C  2.0184237   yes      <NA>     NA\n4 Location C  1.3048697  <NA> extra var     NA\n5 Location C -0.2787888  <NA> extra var     NA\n\n[[4]]\n    location      value extra       var     number\n1 Location D  2.2866454  <NA> extra var         NA\n2 Location D -0.1333213  <NA> extra var         NA\n3 Location D         NA  <NA>      <NA> -0.2842529\n4 Location D         NA  <NA>      <NA>  1.3201133\n\n[[5]]\n    location value extra  var     number\n1 Location E    NA  <NA> <NA> -2.6564554\n2 Location E    NA  <NA> <NA> -0.3066386\n\n\n\n# Before:\n# emoticons_1 <- function(x) {\n#   if (x == \"happy\") {\n#     \":)\"\n#   } else if (x == \"sad\") {\n#     \":(\"\n#   } else {\n#     \"Feeling too complex for emoticons\"\n#   }\n# }\n# emoticons_list <- list(\n#   c(\"happy\", \":)\"),\n#   c(\"sad\", \":(\")\n# )\n# \n# emoticons_2 <- function(x, emoticons_list) {\n#   if (x == emoticons_list[[1]][1]) {\n#     return (emoticons_list[[1]][2])\n#   } else if (x == emoticons_list[[2]][1]) {\n#     return (emoticons_list[[2]][2])\n#   } else {\n#     return (\"Feeling too complex for emoticons\")\n#   }\n# }\n\n# After \ndf <- data.frame(\n  id = c(1:5),\n  mood = c(\"happy\", \"sad\", \"sad\", \"ecstatic\", \"ecstatic\") \n)\n\nemoticons_list <- list(\n  c(\"happy\", \":)\"),\n  c(\"sad\", \":(\"),\n  c(\"ecstatic\", \":D\")\n)\n\nemoticons_df <- data.frame(\n  emotion = c(\"happy\",\"sad\", \"ecstatic\"),\n  emoticon = c(\":)\", \":(\", \":D\")\n)\n\nget_emoticon <- function(df, selected_emotion) {\n  \n  result <- df %>% \n    filter(emotion == selected_emotion) %>% \n    pull(emoticon)\n  \n  return(result)\n}\n\ndf %>% \n  mutate(emoticon = purrr::map(.x = mood, \n                               .f = ~get_emoticon(emoticons_df, .x)\n                              )\n  )\n\n  id     mood emoticon\n1  1    happy       :)\n2  2      sad       :(\n3  3      sad       :(\n4  4 ecstatic       :D\n5  5 ecstatic       :D\n\ndf %>% \n  left_join(emoticons_df, by = c(\"mood\" = \"emotion\"))\n\n  id     mood emoticon\n1  1    happy       :)\n2  2      sad       :(\n3  3      sad       :(\n4  4 ecstatic       :D\n5  5 ecstatic       :D"
+  }
+]

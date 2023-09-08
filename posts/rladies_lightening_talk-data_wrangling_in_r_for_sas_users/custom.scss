@@ -1,0 +1,18 @@
+
+/*-- scss:defaults --*/
+/*-- scss:rules --*/
+.reveal
+  div.sourceCode
+  pre
+  code.has-line-highlights
+  > span:is(.highlight-line) {
+  background: #ffff0057;
+}
+
+.reveal
+  div.sourceCode
+  pre
+  code.has-line-highlights
+  > span:not(.highlight-line) {
+  opacity: 1 !important;
+}

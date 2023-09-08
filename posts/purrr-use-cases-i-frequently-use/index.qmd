@@ -1,0 +1,125 @@
+---
+title: "Functional Programming with Purrr"
+author: "Priyanka Gagneja"
+date: "2023-03-25"
+categories: [R-Programming, examples, til, how-to]
+image: ""
+---
+
+```{r}
+library(dplyr)
+library(purrr)
+```
+
+Place to discuss several use cases where I could use
+
+```{r, ex1}
+#| eval: false
+ 
+## Cache SAS outputs (saved in the same location as SAS output files)
+purrr::walk(.x = output_file_names,
+            .f = ~ write_csv_plus(haven::read_sas(paste0(sas_output_path, "/", .x, ".sas7bdat")),
+                                  paste0(sas_output_path, "/", .x, ".csv"))
+            )
+            
+## Cache SAS outputs (saved inside production/tests/testdata/fn/expected_output)
+purrr::walk(.x = output_file_names,
+            .f = ~ write_csv_plus(haven::read_sas(paste0(sas_output_path, "/", .x, ".sas7bdat")),
+                                  paste0(tests_output_path, "/", .x, ".csv"))
+)
+
+```
+
+```{r, ex2}
+
+set.seed(42)
+df1 <- data.frame(location = rep(c("Location A", "Location B", "Location C"), 3),
+              value = rnorm(9), extra = "yes")
+df2 <- data.frame(location = rep(c("Location A", "Location C", "Location D"), 2),
+              value = rnorm(6), var = "extra var")
+df3 <- data.frame(location = rep(c("Location B", "Location D", "Location E"), 2),
+              number = rnorm(6))
+
+dfs <- list(df1, df2, df3)
+
+# So the spreadsheet would have a tab for location A that would read:
+# Row 1: value 1.37; extra yes; var NA; number NA
+# Row n: value -0.06; extra NA; var extra var; number NA
+# Then similar for Location B...
+# Seems simplish but I'm totally stuck. Any ideas?
+
+
+# ----
+df_s <- dplyr::bind_rows(df1, df2, df3)
+
+filter_loc <- function(df, loc_value) {
+    df %>% 
+        dplyr::filter(location == paste("Location", loc_value))
+}
+
+purrr::map(.x = c("A", "B", "C", "D", "E"), .f = ~ df_s %>% filter_loc(.x))
+
+```
+
+```{r}
+# Before:
+# emoticons_1 <- function(x) {
+#   if (x == "happy") {
+#     ":)"
+#   } else if (x == "sad") {
+#     ":("
+#   } else {
+#     "Feeling too complex for emoticons"
+#   }
+# }
+# emoticons_list <- list(
+#   c("happy", ":)"),
+#   c("sad", ":(")
+# )
+# 
+# emoticons_2 <- function(x, emoticons_list) {
+#   if (x == emoticons_list[[1]][1]) {
+#     return (emoticons_list[[1]][2])
+#   } else if (x == emoticons_list[[2]][1]) {
+#     return (emoticons_list[[2]][2])
+#   } else {
+#     return ("Feeling too complex for emoticons")
+#   }
+# }
+
+# After 
+df <- data.frame(
+  id = c(1:5),
+  mood = c("happy", "sad", "sad", "ecstatic", "ecstatic") 
+)
+
+emoticons_list <- list(
+  c("happy", ":)"),
+  c("sad", ":("),
+  c("ecstatic", ":D")
+)
+
+emoticons_df <- data.frame(
+  emotion = c("happy","sad", "ecstatic"),
+  emoticon = c(":)", ":(", ":D")
+)
+
+get_emoticon <- function(df, selected_emotion) {
+  
+  result <- df %>% 
+    filter(emotion == selected_emotion) %>% 
+    pull(emoticon)
+  
+  return(result)
+}
+
+df %>% 
+  mutate(emoticon = purrr::map(.x = mood, 
+                               .f = ~get_emoticon(emoticons_df, .x)
+                              )
+  )
+
+df %>% 
+  left_join(emoticons_df, by = c("mood" = "emotion"))
+
+```

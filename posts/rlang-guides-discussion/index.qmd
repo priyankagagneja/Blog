@@ -1,0 +1,204 @@
+---
+title: "Tidy Evaluation Guide - Overview"
+subtitle: "Data Masking"
+author: "Priyanka Gagneja"
+date: "2023-05-10"
+categories: [news, code, analysis]
+image: "image.jpg"
+code-annotations: hover
+css: styles.css
+format:
+  revealjs:
+    incremental: true
+    theme: solarized
+---
+
+## Programming variables
+
+-   **Environment** variable - variables that live inside environments.
+
+-   **Data** variable - variables stored in data frames.
+
+## Data Masking
+
+It is a feature that lets you *blend programming variables*.
+
+Easily to refer to data frame columns -
+
+-   as **columns** itself, or
+
+-   as **objects** defined in the current environment.
+
+```{r, echo=FALSE}
+library(dplyr)
+```
+
+```{r, echo=TRUE}
+x <- 100
+mtcars %>% 
+  dplyr::summarise(mean(disp / x))
+```
+
+## But!!
+
+```{r, echo=TRUE}
+# create a dataframe
+(df <- data.frame(x = NA, y = 2))
+
+# create a variable
+(x <- 100)
+
+# divide the column y by 100.
+df %>% 
+  dplyr::mutate(y = y / x)
+```
+
+## But!!
+
+::: columns
+::: {.column width="50%"}
+```{r, echo=TRUE}
+# create a dataframe               
+(df <- data.frame(x = NA, y = 2))       
+
+# create a variable
+(x <- 100)                              
+
+# divide the column y by 100.
+df %>% 
+  dplyr::mutate(y = y / x)
+```
+:::
+
+::: {.column width="50%"}
+::: callout-note
+## Data Variable
+:::
+
+::: callout-note
+## Environment Variable
+:::
+:::
+:::
+
+::: callout-caution
+## Collision
+
+A collision leads to this unexpected behavior
+:::
+
+## Collisions
+
+A collision occurs when there exists an object in the environment and a column in data frame have same name.
+
+-   Column - when you actually wanted to use the object.
+
+    ```{r, echo=TRUE}
+    df <- data.frame(x = NA, y = 2)
+    x <- 100
+
+    df %>% dplyr::mutate(y = y / x)
+    ```
+
+-   Object - when you actually wanted to use the column.
+
+::: columns
+::: {.column width="50%"}
+```{r, echo=TRUE}
+df <- data.frame(x = "right")
+xx <- "wrong"
+
+df %>% 
+  dplyr::mutate(foo = toupper(xx))
+
+```
+:::
+
+::: {.column width="50%"}
+```{r, echo=TRUE}
+df %>% 
+  dplyr::mutate(foo = toupper(x))
+```
+:::
+:::
+
+## How to prevent collisions
+
+**BE EXPLICIT**
+
+```{r}
+df <- data.frame(x = 1, y = 2)
+x <- 100
+```
+
+-   Use .data and .env pronouns\
+.data refers to the dataframe in the latest state before the pipe. 
+
+```{r, echo=TRUE, eval=FALSE}
+df %>% dplyr::mutate(y = .data$y / .env$x)
+```
+
+-   Subsetting .data with env-variables\
+
+```{r, echo=TRUE, eval=FALSE}
+var <- "cyl"
+mtcars %>% dplyr::summarise(mean = mean(.data[[var]]))
+```
+
+::: callout-note
+## .data pronoun can only be subsetted with env-variables, not data-variables.
+
+[[ behaves like an !!(injection operator)
+:::
+
+
+
+-   Injecting env-variables with !!
+
+```{r, echo=TRUE}
+df %>% dplyr::mutate(y = y / !!x)
+```
+
+## Questions
+
+::: callout-note
+Technically, this is because [[ behaves like an injection operator when applied to .data. It is evaluated very early before the data mask is even created.
+:::
+
+
+::: callout-note
+Injection operators such as !! **modify a piece of code early on** by injecting objects or other expressions **before any data-masking logic comes into play**. If you inject the value of a variable, it becomes inlined in the expression. R no longer needs to look up any variable to find the value.
+:::
+
+
+
+## Tidy Selections
+
+-   Dialect of R that optimises column selection in tidyverse packages.
+
+-   No ambiguity due to its implementation.
+
+    -   Evaluation of expressions is **either scoped in the data mask only**, or *in the environment only*.
+
+-   Examples - dplyr::select() and tidyr::pivot_longer().
+
+- Tidy selections distinguish data-expressions and env-expressions:
+
+data is a data-expression that refers to the data-variable.
+
+ncol(data) is an env-expression that refers to the env-variable.
+
+## Names pattern with all_of()
+
+- `all_of()` is often used in functions as a programming pattern that connects column names to a data mask, similarly to the .data pronoun. 
+```{r}
+my_group_by <- function(data, vars) {
+  data %>% dplyr::group_by(across(all_of(vars)))
+}
+```
+
+- `all_of()` is an env-expression that is evaluated outside of the data mask, so there is no possibility of collisions.
+
+```{r}
+
+```

@@ -1,0 +1,22 @@
+---
+title: "CCAI - Smart Metering Data Analysis"
+subtitle: "As part of Climate Change AI teaching series"
+author: "Priyanka Gagneja"
+date: "2023-07-10"
+categories: [climate-change, code, analysis]
+image: "image.jpg"
+---
+
+Credit: Original Authors: "Prof. Dr. Elgar Fleisch, \n Prof. Dr. Thorsten Staake"
+
+**Key Learning Objectives**      
+In this tutorial, we provide a practical guide to current trends in smart meter data analytics. In particular, we focus on feature engineering and machine learning scenarios for energy data. During this tutorial:
+
+- You will gain insights into current trends and use cases in the energy space.     
+- You will learn best practices for energy data visualization.     
+- You will apply both machine learning approaches and data mining techniques to real-world energy data.     
+- You will get a sense of typical and atypical energy use in a residential building.     
+- In addition, some concepts offer the possibility of being applied to other time series data outside of the energy domain.     
+
+Note: We would also like to point out that some utilities allow their customers access to their own smart meter data either through customer portals or upon request. If you have an active smart meter at home, you can use this guide as a starting point for analyzing your own energy usage.
+
